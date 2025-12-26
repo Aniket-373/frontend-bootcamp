@@ -1,0 +1,113 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary);
+}
+
+:root {
+  --primary: #2fafcc;
+  --text: #fffafa;
+}
+
+.container{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.one{
+    height: 200px;
+    width: 300px;
+    border: black 2px solid;
+    background-color: red;
+    padding-top: 100px;
+    color: white;
+    font-size: larger;
+    transition: ease-in-out 0.5s;
+}
+
+.one:hover{
+    background-color: rgb(192, 93, 12);
+    
+}
+
+.two{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: black 2px solid;
+    background-color: yellow;
+    padding-top: 100px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(2) rotate(180deg);
+    }
+    70%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.three{
+    height: 200px;
+    width: 300px;
+    border: black 2px solid;
+    background-color: green;
+    padding-top: 100px;
+}
+
+.grid-container{
+    display: grid;
+    /* grid-template-columns: 200px 200px 200px 100px;
+    grid-template-rows: 100px; */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2,2fr);
+    margin: 50px 50px;   
+    gap: 20px;
+    width: auto;
+}
+
+.grid{
+    height: 50px;
+    border: black 2px solid;
+    padding: 2px;
+    text-align: center;
+}
+
+
+@media (max-width: 480px) {
+    .grid-container{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 2fr);
+    }
+
+    .container{
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .container{
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .grid-container{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 2fr);
+    }
+}

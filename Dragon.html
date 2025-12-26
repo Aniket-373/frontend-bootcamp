@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cinematic Dragon</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at bottom, #020406, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  svg {
+    width: 700px;
+    overflow: visible;
+  }
+
+  /* FLOAT */
+  .dragon {
+    animation: float 6s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  /* WINGS */
+  .wing {
+    transform-origin: top;
+    animation: flap 1.8s ease-in-out infinite;
+  }
+
+  /* HEAD */
+  .head {
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  /* FIRE */
+  .fire {
+    animation: fire 1.2s infinite;
+    filter: drop-shadow(0 0 18px orange);
+  }
+
+  @keyframes flap {
+    0%,100% { transform: rotate(6deg); }
+    50% { transform: rotate(-18deg); }
+  }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes breathe {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+  }
+
+  @keyframes fire {
+    0% { opacity: 0; transform: scale(0.4); }
+    40% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0; transform: scale(0.2); }
+  }
+</style>
+</head>
+
+<body>
+
+<svg viewBox="0 0 800 400">
+  <defs>
+
+    <!-- BODY GRADIENT -->
+    <linearGradient id="bodyGrad" x1="0" x2="1">
+      <stop offset="0%" stop-color="#1e6f50"/>
+      <stop offset="50%" stop-color="#0b3a2b"/>
+      <stop offset="100%" stop-color="#02160f"/>
+    </linearGradient>
+
+    <!-- WING GRADIENT -->
+    <linearGradient id="wingGrad" x1="0" x2="1">
+      <stop offset="0%" stop-color="#1f8a65"/>
+      <stop offset="100%" stop-color="#041a12"/>
+    </linearGradient>
+
+    <!-- FIRE -->
+    <radialGradient id="fireGrad">
+      <stop offset="0%" stop-color="#fff8b0"/>
+      <stop offset="40%" stop-color="#ff9800"/>
+      <stop offset="70%" stop-color="#ff3d00"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+
+  </defs>
+
+  <g class="dragon" transform="translate(200 180)">
+
+    <!-- LEFT WING -->
+    <path class="wing"
+      d="M120 -20 C 40 -80, -80 -40, -120 10
+         C -80 0, -40 20, 20 30"
+      fill="url(#wingGrad)"
+      opacity="0.85"/>
+
+    <!-- RIGHT WING -->
+    <path class="wing"
+      d="M120 -20 C 40 40, -80 80, -120 20
+         C -80 30, -40 10, 20 0"
+      fill="url(#wingGrad)"
+      opacity="0.75"/>
+
+    <!-- BODY -->
+    <ellipse cx="180" cy="40" rx="110" ry="50"
+      fill="url(#bodyGrad)"/>
+
+    <!-- HEAD -->
+    <g class="head">
+      <ellipse cx="60" cy="30" rx="40" ry="30"
+        fill="url(#bodyGrad)"/>
+
+      <!-- EYE -->
+      <circle cx="55" cy="25" r="4" fill="#ffd740"/>
+      <circle cx="55" cy="25" r="2" fill="#000"/>
+
+      <!-- HORN -->
+      <path d="M40 0 L30 -30 L38 -32"
+        fill="#d6cbb2"/>
+    </g>
+
+    <!-- TAIL -->
+    <path
+      d="M290 50 C 360 80, 420 60, 480 100"
+      stroke="url(#bodyGrad)"
+      stroke-width="18"
+      fill="none"
+      stroke-linecap="round"/>
+
+    <!-- FIRE -->
+    <path class="fire"
+      d="M20 35 C -30 10, -60 0, -90 20
+         C -60 40, -40 60, -10 70"
+      fill="url(#fireGrad)"/>
+
+  </g>
+</svg>
+
+</body>
+</html>
